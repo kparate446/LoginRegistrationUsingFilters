@@ -36,7 +36,6 @@ public class EmployeeFilter implements Filter {
         //to give pop up window if user submits blank data
         if (firstName.isBlank() || lastName.isBlank() || username.isBlank() || address.isBlank()) {
             System.out.println("1");
-            /* httpResponse.sendRedirect("login3.jsp"); */
             //httpResponse.sendRedirect("employeeregister.jsp");
             PrintWriter out = response.getWriter();
             response.setContentType("text/html");
@@ -46,18 +45,19 @@ public class EmployeeFilter implements Filter {
             out.println("</script>");
         }
         else 
+        	// It is Used the mixture of Contact number
         if (!password.matches("^[a-zA-Z0-9]{3,8}$")) {
             System.out.println("2");
             /* httpResponse.sendRedirect("login3.jsp"); */
             PrintWriter out = response.getWriter();
             response.setContentType("text/html");
             out.println("<script type=\"text/javascript\">");
-            out.println("alert('Password should be of min 8 character');");
+            out.println("alert('Password should be of max 8 character');");
             out.println("location='employeeregister.jsp';");
             out.println("</script>");
         }else
-        
-        if (!contact.matches("^[0-9]{10}$")) {
+        // It is used in 10 Digit Contact Number only
+         if (!contact.matches("^[0-9]{10}$")) {
             System.out.println("3");
             /* httpResponse.sendRedirect("login3.jsp"); */
             PrintWriter out = response.getWriter();
@@ -68,7 +68,7 @@ public class EmployeeFilter implements Filter {
             out.println("</script>");
         }
         else {
-        	chain.doFilter(request, response);
+        	chain.doFilter(request, response);// doFilter --> call the Servlet
         }
 	}
 

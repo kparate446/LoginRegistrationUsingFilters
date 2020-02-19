@@ -1,5 +1,4 @@
 
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,22 +18,20 @@ public class LoginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-    	System.out.println("hello");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         Login login = new Login();
-        login.setUsername(username);
+        login.setUsername(username);// set the data into pojo class
         login.setPassword(password);
         try {
-            if (log.validate(login)) {
-//            	System.out.println("hello");
+            if (log.validate(login)) { // send the data into LoginConnection.java
                 //HttpSession session = request.getSession();
                 // session.setAttribute("username",username);
-                response.sendRedirect("loginsuccess.jsp");
+                response.sendRedirect("loginsuccess.jsp"); // Data is correct goto Loginsuccess.jsp page
             } else {
                 HttpSession session = request.getSession();
                 //session.setAttribute("user", username);
-//                response.sendRedirect("login.jsp");
+                response.sendRedirect("login.jsp");// Data is not correct goto Login.jsp page call
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

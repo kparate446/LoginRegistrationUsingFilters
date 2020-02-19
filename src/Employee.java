@@ -6,6 +6,7 @@ public class Employee {
 	private String password;
 	private String address;
 	private String contact;
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -38,9 +39,8 @@ public class Employee {
 	}
 	public String getContact() {
 		return contact;
-	}
+	}	
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
-	
 }

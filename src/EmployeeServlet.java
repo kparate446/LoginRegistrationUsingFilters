@@ -1,5 +1,4 @@
 
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,26 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/EmployeeServlet")
 public class EmployeeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-private EmployeeConnection connection;
-	
+	private EmployeeConnection connection;
 
 	public void init() {
 		connection = new EmployeeConnection();
 	}
-//	
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String username= request.getParameter("username");
-//		String password= request.getParameter("password");
-//		
-//		if(username.equals("kunal") && password.equals("123")) {
-//			response.sendRedirect("employeedetails.jsp");
-//		}
-//	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String firstName = request.getParameter("firstName");
+		String firstName = request.getParameter("firstName");// getting the data in
 		String lastName = request.getParameter("lastName");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -40,7 +29,7 @@ private EmployeeConnection connection;
 		String contact = request.getParameter("contact");
 
 		Employee employee = new Employee();
-		employee.setFirstName(firstName);
+		employee.setFirstName(firstName);// Send the data in pojo class
 		employee.setLastName(lastName);
 		employee.setUsername(username);
 		employee.setPassword(password);
@@ -48,9 +37,9 @@ private EmployeeConnection connection;
 		employee.setAddress(address);
 
 		try {
-			connection.registerEmployee(employee);
+			connection.registerEmployee(employee);// call the EmployeeConnection.java
 		} catch (Exception e) {
-			System.out.println("Exception : "+e);
+			System.out.println("Exception : " + e);
 		}
 		response.sendRedirect("employeedetail.jsp");
 	}
